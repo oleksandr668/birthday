@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday Experience</title>
+
+    <!-- Шрифти -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Фонові частинки -->
+    <div id="particles"></div>
+
+    <!-- Конфеті -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <main class="card">
+
+        <!-- ПЕРШИЙ ЕКРАН -->
+        <section id="introScreen">
+
+            <p class="eyebrow">A LITTLE SURPRISE FOR YOU</p>
+
+            <h1>Ваш день — особливий</h1>
+
+            <p class="description">
+                На вас чекає маленький сюрприз...
+            </p>
+
+            <div class="cake-area">
+
+                <button class="cake-button" id="cakeButton" type="button">
+                    <span class="cake-icon">🎂</span>
+                    <span class="tap-hint">Натисніть на тортик</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ПАРОЛЬ -->
+        <form id="passwordForm" class="password-panel" hidden>
+
+            <p class="eyebrow">SECRET ACCESS</p>
+
+            <h2>Маленька перевірка</h2>
+
+            <p>Введіть чотири цифри</p>
+
+            <input
+                type="password"
+                id="birthYear"
+                placeholder="••••"
+                maxlength="4"
+                inputmode="numeric"
+                pattern="[0-9]{4}"
+                autocomplete="off"
+                required
+            >
+
+            <p class="hint">
+                Підказка: це ваш рік народження
+            </p>
+
+            <button type="submit" class="main-button">
+                Відкрити привітання
+            </button>
+
+            <p id="errorMessage" class="error"></p>
+
+        </form>
+
+
+        <!-- ГОЛОВНЕ ПРИВІТАННЯ -->
+        <section id="greeting" hidden>
+
+            <p class="eyebrow">SURPRISE UNLOCKED</p>
+
+            <div class="celebration">🎉 ✨ 🎈</div>
+
+            <h2 class="greeting-title">
+                З днем народження!
+            </h2>
+
+            <p id="greetingText" class="greeting-text"></p>
+
+            <div class="days-box">
+                <p>Ви вже живете на цій планеті</p>
+                <h3><span id="daysCounter">0</span></h3>
+                <p>днів</p>
+            </div>
+
+            <div class="section">
+                <h3>Музика для настрою</h3>
+
+                <button id="musicButton" class="main-button" type="button">
+                    ▶ Увімкнути музику
+                </button>
+
+                <div class="volume-box">
+                    <label for="volumeSlider">Гучність</label>
+
+                    <input
+                        type="range"
+                        id="volumeSlider"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value="0.5"
+                    >
+                </div>
+
+                <p id="musicStatus" class="section-description"></p>
+
+                <audio id="music" src="music.mp3" loop preload="none"></audio>
+            </div>
+
+
+
+            <!-- ВИПАДКОВІ ПОБАЖАННЯ -->
+            <div class="section">
+                <h3>Трохи побажань</h3>
+
+                <p id="wishText">
+                    Натисніть кнопку, щоб отримати побажання.
+                </p>
+
+                <button id="wishButton" class="main-button" type="button">
+                    Ще одне побажання
+                </button>
+            </div>
+
+
+            <!-- ПОДАРУНОК -->
+            <div class="section">
+                <h3>Для вас є подарунок</h3>
+
+                <button id="giftButton" class="gift-button" type="button">
+                    <span id="giftIcon">🎁</span>
+                    <span>Відкрити подарунок</span>
+                </button>
+
+                <p id="giftMessage" class="hidden-message" hidden>
+                    Найцінніший подарунок — це люди,
+                    які роблять наше життя особливим. ❤️
+                </p>
+            </div>
+
+
+            <!-- ФОТОГАЛЕРЕЯ -->
+            <div class="section">
+                <h3>Наші моменти</h3>
+
+                <p class="section-description">
+                    Декілька спогадів, які хочеться зберегти.
+                </p>
+
+                <div class="gallery">
+
+                    <img src="images/photo1.jpg" alt="Фото 1">
+
+                    <img src="images/photo2.jpg" alt="Фото 2">
+
+                    <img src="images/photo3.jpg" alt="Фото 3">
+
+                </div>
+            </div>
+
+            <!-- КОНВЕРТ -->
+            <div class="section">
+                <h3>Лист для вас</h3>
+
+                <button id="envelopeButton" class="envelope-button" type="button">
+                    <span id="envelopeIcon">💌</span>
+                    <span>Відкрити лист</span>
+                </button>
+
+                <div id="letterContent" class="letter-content" hidden>
+
+                    <h3>Особисто для вас</h3>
+
+                    <p>
+                        Нехай кожен новий день приносить
+                        щось хороше. Не бійтеся мріяти,
+                        пробувати нове та бути собою.
+                        Попереду ще стільки цікавого!
+                    </p>
+
+                    <p class="signature">З найкращими побажаннями ❤️</p>
+
+                </div>
+            </div>
+
+
+            <!-- СЕКРЕТНИЙ СЮРПРИЗ -->
+            <div class="section secret-section">
+
+                <h3>А ось іще дещо...</h3>
+
+                <button id="secretButton" class="main-button" type="button">
+                    Секретний сюрприз
+                </button>
+
+                <div id="secretMessage" class="secret-message" hidden>
+                    <h3>Ви особлива людина!</h3>
+                    <p>Ніколи не забувайте про це. ✨</p>
+                </div>
+
+            </div>
+
+            <p class="footer-text">
+                З найкращими побажаннями
+                Олександр Пелюх ❤️
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

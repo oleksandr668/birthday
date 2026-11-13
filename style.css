@@ -1,0 +1,687 @@
+
+/* =================================
+   1. ЗАГАЛЬНІ НАЛАШТУВАННЯ
+================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 35px 15px;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(32, 105, 112, 0.3),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(42, 75, 104, 0.25),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #080f14,
+            #10232b,
+            #17343e,
+            #0a1419
+        );
+
+    color: white;
+
+    font-family: 'Poppins', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* =================================
+   2. ФОНОВІ ЧАСТИНКИ
+================================= */
+
+#particles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    bottom: -30px;
+
+    color: rgba(137, 219, 210, 0.5);
+
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.7;
+    }
+
+    85% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(-115vh) rotate(300deg);
+        opacity: 0;
+    }
+}
+
+/* =================================
+   3. КОНФЕТІ
+================================= */
+
+#confettiCanvas {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* =================================
+   4. ГОЛОВНА КАРТКА
+================================= */
+
+.card {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 720px;
+
+    padding: 45px 30px;
+
+    background: rgba(8, 18, 24, 0.78);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    border-radius: 26px;
+
+    box-shadow: 0 25px 80px rgba(0,0,0,0.35);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+h1 {
+    font-size: clamp(32px, 6vw, 52px);
+    margin: 15px 0;
+}
+
+h2 {
+    font-size: clamp(27px, 5vw, 38px);
+}
+
+h3 {
+    font-size: 23px;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #75c8bd;
+}
+
+.description {
+    color: #aabac1;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.section-description {
+    font-size: 13px;
+    color: #aabac1;
+}
+
+/* =================================
+   5. ТОРТИК
+================================= */
+
+.cake-area {
+    margin-top: 45px;
+}
+
+.cake-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: auto;
+    border: none;
+    background: none;
+
+    color: white;
+    cursor: pointer;
+}
+
+.cake-icon {
+    display: block;
+    font-size: 115px;
+
+    filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4));
+
+    animation: cakeFall 1.5s cubic-bezier(.2,.8,.3,1.2) both;
+}
+
+.cake-icon.floating {
+    animation: cakeFloat 3s ease-in-out infinite;
+}
+
+@keyframes cakeFall {
+    0% {
+        opacity: 0;
+        transform: translateY(-500px) rotate(-20deg);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateY(15px) rotate(5deg);
+    }
+
+    85% {
+        transform: translateY(-8px) rotate(-3deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+}
+
+@keyframes cakeFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.tap-hint {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #aabac1;
+}
+
+/* =================================
+   6. ПАРОЛЬ
+================================= */
+
+.password-panel {
+    margin-top: 20px;
+
+    animation: appear 0.7s ease both;
+}
+
+.password-panel input {
+    display: block;
+    width: 190px;
+    margin: 20px auto;
+
+    padding: 15px;
+
+    background: rgba(255,255,255,0.07);
+
+    border: 1px solid rgba(117,200,189,0.5);
+    border-radius: 12px;
+
+    color: white;
+    font-size: 25px;
+    letter-spacing: 10px;
+
+    text-align: center;
+    outline: none;
+}
+
+.password-panel input:focus {
+    border-color: #75c8bd;
+    box-shadow: 0 0 15px rgba(117,200,189,0.2);
+}
+
+.hint {
+    color: #aabac1;
+    font-size: 12px;
+}
+
+.error {
+    color: #ff8989;
+    font-size: 13px;
+}
+
+/* =================================
+   7. КНОПКИ
+================================= */
+
+.main-button {
+    display: inline-block;
+
+    padding: 13px 24px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #75c8bd;
+    color: #10232b;
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s,
+        background 0.3s,
+        box-shadow 0.3s;
+}
+
+.main-button:hover {
+    transform: translateY(-3px);
+
+    background: #a1e5d9;
+
+    box-shadow: 0 8px 25px rgba(117,200,189,0.2);
+}
+
+button:focus-visible {
+    outline: 2px solid #a1e5d9;
+    outline-offset: 4px;
+}
+
+/* =================================
+   8. ПОЯВА ЕЛЕМЕНТІВ
+================================= */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.greeting-title {
+    color: #75c8bd;
+}
+
+.celebration {
+    margin: 25px 0;
+    font-size: 38px;
+
+    animation: celebrationPop 1s ease both;
+}
+
+@keyframes celebrationPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-15deg);
+    }
+
+    70% {
+        transform: scale(1.2) rotate(5deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+.greeting-text {
+    color: #d2dce0;
+
+    font-size: 15px;
+    line-height: 2;
+
+    max-width: 530px;
+    min-height: 90px;
+    margin: 20px auto;
+}
+
+.signature {
+    color: #75c8bd;
+    margin-top: 25px;
+}
+
+/* =================================
+   9. ЛІЧИЛЬНИК ДНІВ
+================================= */
+
+.days-box {
+    margin: 35px auto;
+    padding: 20px;
+
+    max-width: 350px;
+
+    background: rgba(117,200,189,0.07);
+
+    border: 1px solid rgba(117,200,189,0.2);
+    border-radius: 18px;
+}
+
+.days-box p {
+    color: #aabac1;
+    font-size: 13px;
+}
+
+.days-box h3 {
+    color: #75c8bd;
+    font-size: 42px;
+    margin: 5px;
+}
+
+/* =================================
+   10. СЕКЦІЇ
+================================= */
+
+.section {
+    margin-top: 45px;
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(255,255,255,0.09);
+}
+
+.section h3 {
+    color: #cde7e3;
+}
+
+.hidden-message {
+    max-width: 450px;
+    margin: 20px auto;
+
+    padding: 20px;
+
+    line-height: 1.8;
+    color: #cde7e3;
+
+    background: rgba(117,200,189,0.08);
+    border-radius: 15px;
+
+    animation: appear 0.5s ease both;
+}
+
+/* =================================
+   11. ПОДАРУНОК
+================================= */
+
+.gift-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    margin: 20px auto;
+    padding: 15px 25px;
+
+    color: white;
+    font-family: 'Poppins', sans-serif;
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(117,200,189,0.3);
+    border-radius: 15px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.gift-button span:first-child {
+    font-size: 65px;
+}
+
+.gift-button:hover {
+    transform: translateY(-5px);
+    background: rgba(117,200,189,0.12);
+}
+
+.gift-button.open span:first-child {
+    animation: giftOpen 0.7s ease;
+}
+
+@keyframes giftOpen {
+    0%, 100% {
+        transform: scale(1) rotate(0);
+    }
+
+    40% {
+        transform: scale(1.4) rotate(-15deg);
+    }
+
+    70% {
+        transform: scale(1.2) rotate(15deg);
+    }
+}
+
+/* =================================
+   12. ГАЛЕРЕЯ
+================================= */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 190px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.1);
+
+    transition: transform 0.4s, filter 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.04);
+    filter: brightness(1.1);
+}
+
+/* =================================
+   13. МУЗИКА
+================================= */
+
+.volume-box {
+    margin: 20px auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    color: #aabac1;
+    font-size: 12px;
+}
+
+.volume-box input {
+    width: 170px;
+    accent-color: #75c8bd;
+}
+
+#musicStatus {
+    min-height: 20px;
+}
+
+/* =================================
+   14. КОНВЕРТ І ЛИСТ
+================================= */
+
+.envelope-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    padding: 15px 25px;
+    margin: 20px auto;
+
+    color: white;
+    font-family: 'Poppins', sans-serif;
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(117,200,189,0.3);
+    border-radius: 15px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.envelope-button span:first-child {
+    font-size: 60px;
+}
+
+.envelope-button:hover {
+    transform: translateY(-4px);
+}
+
+.envelope-button.open span:first-child {
+    animation: envelopeOpen 0.6s ease;
+}
+
+@keyframes envelopeOpen {
+    0%, 100% {
+        transform: rotate(0) scale(1);
+    }
+
+    50% {
+        transform: rotate(-15deg) scale(1.2);
+    }
+}
+
+.letter-content {
+    max-width: 480px;
+    margin: 20px auto;
+    padding: 25px;
+
+    background: #e8e1d2;
+    color: #29343b;
+
+    border-radius: 12px;
+
+    line-height: 1.9;
+
+    animation: appear 0.8s ease both;
+}
+
+.letter-content h3 {
+    color: #253e43;
+}
+
+/* =================================
+   15. СЕКРЕТНИЙ СЮРПРИЗ
+================================= */
+
+.secret-message {
+    margin: 20px auto;
+    padding: 25px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(117,200,189,0.16),
+        rgba(32,65,80,0.25)
+    );
+
+    border: 1px solid rgba(117,200,189,0.3);
+    border-radius: 17px;
+
+    animation: appear 0.7s ease both;
+}
+
+.secret-message h3 {
+    color: #75c8bd;
+}
+
+/* =================================
+   16. НИЖНІЙ НАПИС
+================================= */
+
+.footer-text {
+    margin-top: 45px;
+
+    font-size: 11px;
+    letter-spacing: 3px;
+
+    color: #78949c;
+}
+
+/* =================================
+   17. ТЕЛЕФОНИ
+================================= */
+
+@media (max-width: 500px) {
+
+    .card {
+        padding: 35px 18px;
+    }
+
+    .cake-icon {
+        font-size: 90px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery img {
+        height: 230px;
+    }
+
+    .section {
+        margin-top: 35px;
+    }
+
+    .greeting-text {
+        font-size: 14px;
+    }
+}
+
+/* =================================
+   18. ЗМЕНШЕННЯ РУХУ
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
