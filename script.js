@@ -55,6 +55,8 @@ cakeButton.addEventListener("click", function() {
 
     passwordForm.hidden = false;
 
+    passwordForm.scrollIntoView({ behavior: "smooth", block: "center" });
+
     cakeButton.querySelector(".tap-hint").textContent =
         "Тепер введіть секретний код";
 
